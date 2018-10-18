@@ -31,6 +31,6 @@ pipeline {
                 build job: 'deploy-to-qa'
             }
         }
-    }
+    
     }
 }
