@@ -4,6 +4,10 @@ pipeline {
          pollSCM('* * * * *') // Polling Source Control
      }
 
+     tools {
+        maven 'Maven'
+    }
+
     stages{
         stage('Build'){
             steps{
