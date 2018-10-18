@@ -7,7 +7,7 @@
     <artifactId>miniproject-odumosu-niyi</artifactId>
     <version>0.1.0</version>
     <packaging>jar</packaging>
-    <name>Spring Boot Docker</name>
+    <name>Mini Project Niyi</name>
     <description>Miniproject for Stelligent using spring boot and docker</description>
 
     <parent>
@@ -38,7 +38,13 @@
                 </configuration>
             </plugin>
             <!-- end::plugin[] -->
-
+            <!-- tag::plugin[] -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.5.0.1254</version>
+            </plugin>
+            <!-- end::plugin[] -->
             <!-- tag::unpack[] -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
