@@ -12,7 +12,7 @@ stages{
         post {
             success {
                 echo "Now archiving...."
-                archiveArtifacts artifats: '**/build/libs/*.jar, **/target/*.jar'
+                archiveArtifacts artifacts: '**/build/libs/*.jar, **/target/*.jar'
             }
         }
         
