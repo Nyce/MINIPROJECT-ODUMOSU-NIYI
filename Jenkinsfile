@@ -21,5 +21,16 @@ pipeline {
             }
    
         }
+        stage('QualityCheck'){
+            steps{
+                build job: 'mini-project-code-quality'
+            }
+        }
+        stage('QA-Deployment'){
+            steps{
+                build job: 'deploy-to-qa'
+            }
+        }
+    }
     }
 }
