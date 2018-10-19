@@ -13,22 +13,25 @@ pipeline {
             steps{
                 sh 'mvn clean package'
             }
-            post {
-                success {
-                    echo "Now archiving...."
-                    archiveArtifacts artifacts: '**/build/libs/*.jar, **/target/*.jar'
-                }  
-            }
    
         }
         stage('QualityCheck'){
             steps{
                 build job: 'mini-project-code-quality'
             }
+
+            post {
+                success {
+                    echo "Now archiving...."
+                    archiveArtifacts artifacts: '**/build/libs/*.jar, **/target/*.jar'
+                }  
+            }
         }
         stage('QA-Deployment'){
             steps{
-                build job: 'deploy-to-qa'
+                sh 'var=$((var+1)) && cd ~/workspaces'
+                sh 'tar czf miniproject-$var.tar MINIPROJECT-ODUMOSU-NIYI/'
+                sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem miniproject-$var.tar ec2-user@35.175.220.249'
             }
         }
 
