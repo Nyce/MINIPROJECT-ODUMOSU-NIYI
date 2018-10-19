@@ -11,7 +11,7 @@ pipeline {
     stages{
         stage('Build'){
             steps{
-                sh 'mvn clean package'
+                sh 'mvn clean install'
             }
    
         }
@@ -24,13 +24,29 @@ pipeline {
                 success {
                     echo "Now archiving...."
                     archiveArtifacts artifacts: '**/build/libs/*.jar, **/target/*.jar'
+
                 }  
             }
         }
+
+        stage('Deploy to QA'){
+            steps{
+                build job: 'deploy-to-qa'
+            }
+        }
+
+        stage('Deploy to Prod'){
+            steps{
+                timeout(time:5, unit:'DAYS'){
+                    input message:'Approve PRODUCTION Deployment?'
+                }
+                build job: 'deploy-to-prod'
+        }
+        /*
         stage('QA-Deployment'){
             steps{
-                sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem target/*.jar ec2-user@ec2-52-90-3-173.compute-1.amazonaws.com:~'
-                sh 'ssh -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem  ec2-user@ec2-52-90-3-173.compute-1.amazonaws.com "java -jar miniproject-odumosu-niyi-0.1.0.jar;"'
+                sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem target/*.jar ec2-user@ec2-54-90-243-96.compute-1.amazonaws.com:~'
+                sh 'ssh -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem  ec2-user@ec2-54-90-243-96.compute-1.amazonaws.com "java -jar miniproject-odumosu-niyi-0.1.0.jar;"'
                 
             }
         }
@@ -54,7 +70,9 @@ pipeline {
                     echo ' Deployment failed.'
                 }
             }
-        }
+        }*/
     
     }
 }
+
+
