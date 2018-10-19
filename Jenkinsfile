@@ -31,7 +31,9 @@ pipeline {
             steps{
                 sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem target/*.jar ec2-user@35.175.220.249:~'
                 sh 'ssh -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem  ec2-user@35.175.220.249'
-                sh 'java -jar miniproject-odumosu-niyi-0.1.0.jar'
+                sh 'pwd'
+                sh 'ls'
+                // sh 'java -jar miniproject-odumosu-niyi-0.1.0.jar'
             }
         }
 
