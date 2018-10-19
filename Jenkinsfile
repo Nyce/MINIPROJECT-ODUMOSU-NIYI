@@ -29,7 +29,7 @@ pipeline {
         }
         stage('QA-Deployment'){
             steps{
-                sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem target/*.jar ec2-user@35.175.220.249:~'
+                sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem -o StrictHostKeyChecking=no target/*.jar ec2-user@35.175.220.249:~'
                 sh 'ssh -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem  ec2-user@35.175.220.249'
             }
         }
@@ -40,7 +40,7 @@ pipeline {
                     input message:'Approve PRODUCTION Deployment?'
                 }
 
-                sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem target/*.jar ec2-user@54.89.173.143:~'
+                sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem -o StrictHostKeyChecking=no target/*.jar ec2-user@54.89.173.143:~'
                 sh 'ssh -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem  ec2-user@54.89.173.143'
             }
             post {
