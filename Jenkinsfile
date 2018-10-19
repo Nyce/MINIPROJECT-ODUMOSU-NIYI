@@ -29,7 +29,7 @@ pipeline {
         }
         stage('QA-Deployment'){
             steps{
-                sh 'chmod 644 /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem'
+                sh 'sudo chmod 644 /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem'
                 sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem target/*.jar ec2-user@35.175.220.249:~'
                 sh 'ssh -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem  ec2-user@35.175.220.249'
             }
