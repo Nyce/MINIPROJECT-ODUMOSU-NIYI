@@ -29,9 +29,8 @@ pipeline {
         }
         stage('QA-Deployment'){
             steps{
-                sh 'var=$((var+1)) && cd ~/workspaces'
-                sh 'tar czf miniproject-$var.tar MINIPROJECT-ODUMOSU-NIYI/'
-                sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem miniproject-$var.tar ec2-user@35.175.220.249'
+                sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem **/target/*.jar ec2-user@35.175.220.249:~'
+                sh 'ssh -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem  ec2-user@35.175.220.249'
             }
         }
 
@@ -41,7 +40,8 @@ pipeline {
                     input message:'Approve PRODUCTION Deployment?'
                 }
 
-                build job: 'deploy-to-prod'
+                sh 'scp -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem **/target/*.jar ec2-user@54.89.173.143:~'
+                sh 'ssh -i /Users/niyiodumosu/workspaces/MINIPROJECT-ODUMOSU-NIYI/miniproject-key.pem  ec2-user@54.89.173.143'
             }
             post {
                 success {
