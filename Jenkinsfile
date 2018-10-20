@@ -29,6 +29,12 @@ pipeline {
             }
         }
 
+        stage('Dockerize miniproject'){
+            steps{
+                build job: 'miniproject-dockerize'
+            }
+        }
+
         stage('Deploy to QA'){
             steps{
                 build job: 'deploy-to-qa'
