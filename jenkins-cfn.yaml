@@ -1,0 +1,81 @@
+Parameters:
+  NameOfService:
+    Description: "KeyPair for Jenkins server"
+    Type: String
+  KeyName: 
+    Description: Name of an existing EC2 KeyPair to enable SSH access into the server
+    Type: AWS::EC2::KeyPair::KeyName
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Metadata: 
+      AWS::CloudFormation::Init:
+        config: 
+          packages: 
+            yum:
+              java-1.8.0: []
+          
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0ff8a91507f77f867
+      SecurityGroupIds:
+        - !Ref MySecurityGroup
+      Tags:
+        - Key: Name
+          Value: !Ref NameOfService
+      KeyName: !Ref KeyName
+      UserData:
+        'Fn::Base64': 
+          !Sub |
+            #!/bin/bash -xe            
+            # Update Yum package installer
+            sudo yum update –y
+
+            # remove old java version
+            sudo yum remove -y java-1.7.0
+            # install new java version 
+            sudo yum install -y java-1.8.0
+
+
+            # Download latest Jenkins code
+            sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
+            # Import key from jenkins cli to enable package installation
+            sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+            # Install jenkins
+            sudo yum install jenkins -y
+            # start jenkins on port 8080
+            sudo service jenkins start
+
+            # downloand and install sonarqube
+            cd /opt 
+            sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.3.zip
+            sudo unzip sonarqube-7.3.zip
+            mv sonarqube-7.3 sonarqube
+            cd /opt/sonarqube/bin/linux-x86-64
+            sudo ./sonar.sh start
+            
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Open Ports 22, 8080 80
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: '22'
+        ToPort: '22'
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: '80'
+        ToPort: '80'
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: '8080'
+        ToPort: '8080'
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: '9000'
+        ToPort: '9000'
+        CidrIp: 0.0.0.0/0
+Outputs:
+  Website:
+    Description: The Public DNS for the EC2 Instance
+    Value: !Sub 'http://${EC2Instance.PublicDnsName}'
