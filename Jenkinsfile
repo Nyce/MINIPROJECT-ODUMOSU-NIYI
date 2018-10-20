@@ -41,6 +41,7 @@ pipeline {
                     input message:'Approve PRODUCTION Deployment?'
                 }
                 build job: 'deploy-to-prod'
+            }
         }
         /*
         stage('QA-Deployment'){
@@ -74,6 +75,6 @@ pipeline {
     
     }
   }
-}
+
 
 
