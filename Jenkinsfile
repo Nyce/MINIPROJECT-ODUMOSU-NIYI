@@ -13,32 +13,7 @@ pipeline {
             steps{
                  build job: 'miniproject-build'
             }
-            /*
-            post {
-                success {
-                    echo "Now archiving...."
-                    archiveArtifacts artifacts: '**/build/libs/*.jar, **/target/*.jar'
-
-                }  
-            }
-            */
         }
-    /*
-        stage('QualityCheck'){
-            steps{
-                build job: 'mini-project-code-quality'
-            }
-
-            post {
-                success {
-                    echo "Now archiving...."
-                    archiveArtifacts artifacts: '**/build/libs/*.jar, **/target/*.jar'
-
-                }  
-            }
-        }
-        */
-
 
         stage('Dockerize miniproject'){
             steps{
