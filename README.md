@@ -53,13 +53,13 @@ Now that the changes have been pushed to this repo's master branch, you can see 
 1. Go to http://ec2-35-173-247-136.compute-1.amazonaws.com:8080 to visit the jenkins server that hosts our delivery pipeline. 
 2. You can login with these credentials UN: `user` PW: `jenkins`
 
-![Jenkins Login](/Users/niyiodumosu/Desktop/miniproject-readme/jenkins_login.png)
+![Jenkins Login](https://s3.amazonaws.com/niyiodumosu-bucket/jenkins_login.png)
 3. Once you login, you should see multiple build jobs in the jenkins dashboard. Click on `miniproject-pipeline`
 
-![Jenkins Dashboard](/Users/niyiodumosu/Desktop/miniproject-readme/dashboard.png)
+![Jenkins Dashboard](https://s3.amazonaws.com/niyiodumosu-bucket/dashboard.png)
 4. Here you should see that the miniproject-pipeline kicks off multiple build jobs for the miniproject. More than likely you see one of the jobs in the pipeline building.
 
-![Jenkins Dashboard](https://cdn.vox-cdn.com/thumbor/fbrTLtxuP2D29o8VJUaE-u3NKfU=/0x0:792x613/1200x800/filters:focal(300x237:426x363)/cdn.vox-cdn.com/uploads/chorus_image/image/59850273/Docker_logo_011.0.png)
+![Jenkins Dashboard](https://s3.amazonaws.com/niyiodumosu-bucket/pipeline.png)
 
 Now let's break down each build job in the miniproject pipeline!
 
