@@ -1,6 +1,5 @@
 .DS_Store
 .gradle/*
-target/
+target/*
 *.pem
-build/
-.idea
+build/*
