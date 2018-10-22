@@ -1,5 +1,4 @@
-.DS_Store
-.gradle/*
-target/*
-*.pem
-build/*
+.gradle/
+build/
+target/
+.idea/
