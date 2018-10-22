@@ -17,7 +17,7 @@ pipeline {
 
         stage('Dockerize miniproject'){
             steps{
-                build job: 'miniproject-dockerize'
+                build job: 'miniproject-docker'
             }
         }
 
