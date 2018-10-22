@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.springframework</groupId>
+    <groupId>niyi37</groupId>
     <artifactId>miniproject-odumosu-niyi</artifactId>
     <version>0.1.0</version>
     <packaging>jar</packaging>
@@ -28,7 +28,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- tag::plugin[] -->
+            <!-- tag::plugin[This is to run the mvn dockerfile:{command} commands] -->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
@@ -38,7 +38,7 @@
                 </configuration>
             </plugin>
             <!-- end::plugin[] -->
-            <!-- tag::plugin[] -->
+            <!-- tag::plugin[This is used to run mvn sonar:sonar] -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
@@ -71,6 +71,22 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- boilerplate code so Maven can generate a .war archive without requiring a web.xml file -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <archive>
+                        <manifestEntries>
+                            <Premain-Class>com.newrelic.bootstrap.BootstrapAgent</Premain-Class>
+                            <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                            <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
             <!-- end::unpack[] -->
         </plugins>
     </build>
@@ -90,6 +106,13 @@
             <artifactId>lombok</artifactId>
             <version>1.16.8</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.newrelic.agent.java</groupId>
+            <artifactId>newrelic-java</artifactId>
+            <version>3.47.1</version>
+            <scope>provided</scope>
+            <type>zip</type>
         </dependency>
     </dependencies>
 
