@@ -15,6 +15,12 @@ pipeline {
             }
         }
 
+        stage('Enforce quality checks for miniproject'){
+            steps{
+                build job: 'miniproject-quality-gate'
+            }
+        }
+
         stage('Dockerize miniproject'){
             steps{
                 build job: 'miniproject-docker'
