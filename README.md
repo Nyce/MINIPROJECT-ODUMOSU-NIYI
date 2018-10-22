@@ -56,5 +56,12 @@ Now that the changes have been pushed to this repo's master branch, you can see 
 
 Now let's break down each build job in the miniproject pipeline!
 
-- 
+1. `miniproject-build` - this job cleans the project and by deleting the previous version of dependencies and builds the project by installing the latest dependencies and compiling the latest code and running the latest tests. It has the most recent version of the code pushe in Github. Executed command is `mvn clean package`
 
+2. `miniproject-quality-gate` - this job is similar to the previous job but the difference is it runs a series of checkstyle rules to evaluate the quality of the written code. Checkstyle rules often detect poor coding practices as well as potential bugs. It cross references the code against PMD violation rules. Checkstyle also runs code coverage to see the how many lines of code the tests cover. Executed command is `mvn checkstyle:checkstyle`
+
+3. `miniproject-dockerize` - this job builds the code and then builds a docker image of the code. After the `docker build` it pushes the image to my docker repository. You can visit my docker hub that contains the pushed images at https://hub.docker.com/r/niyi37/miniproject-odumosu-niyi/tags/
+
+4. `miniproject-qa` - here is where we see our first deployment. This job pulls the latest image from the `niyi37/miniproject-odumosu-niyi` docker repository. Then it runs the image inside a docker container on the QA's ec2 instance.
+
+4. `miniproject-prod` - this job does the same as the QA job but pulls the image into the prod's ec2 instance. 
