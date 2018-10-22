@@ -32,6 +32,8 @@ They include the following:
 - Gradle - https://gradle.org/install/
 - Docker - https://docs.docker.com/docker-for-mac/install/ 
 
+![Tech Stack](https://s3.amazonaws.com/niyiodumosu-bucket/tech+stack.png)
+
 ## Let's get started!
 
 1. Start your delivery journey by forking a repo off this base branch `https://github.com/Nyce/MINIPROJECT-ODUMOSU-NIYI/` 
