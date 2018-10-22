@@ -27,10 +27,10 @@ Tech Stack:
 ### Prerequisites
 There are certain technologies that you will need to have on your personal machine in order to run this application.
 They include the following:
-- Java 8 
-- Apache Maven
-- Gradle 
-- Docker
+- Java 8 - https://www.oracle.com/technetwork/java/javaseproducts/downloads/index.html
+- Apache Maven - https://maven.apache.org/download.cgi
+- Gradle - https://gradle.org/install/
+- Docker - https://docs.docker.com/docker-for-mac/install/ 
 
 ## Let's get started!
 
