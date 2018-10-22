@@ -22,6 +22,7 @@ Tech Stack:
  - SonarQube
  - Groovy Pipeline Script
  - AWS infrastructure
+ - New Relic
 
 ### Prerequisites
 There are certain technologies that you will need to have on your personal machine in order to run this application.
