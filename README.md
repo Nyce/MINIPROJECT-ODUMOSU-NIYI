@@ -42,12 +42,14 @@ They include the following:
 4. Now it's time to clean and build the project. You can do this by running the following `mvn clean package` & `mvn clean install`
 5. Make a small change. Go to `src/main/hello/Application.java` and open the file in a text editor of your choosing.
 6. On line 27 of the file in the `automoate.setMessage()` method, change the string to whatever you like. Then when you are finished commit and push the changes to your forked branch.
+7. Now it's time to run the application. You can do so by executing `java -jar target/miniproject-odumosu-niyi` in the root directory.
+This will start the application on port 8100. You can see the service running on a browser at http://localhost:8100
  - Don't know how to commit and push changes? No problem. Run the following commands in the root directory of the project.
  -`git commit -a -m "First code change"`
  - `git push orgin <your branch>`
  
- 7. Once you've pushed your change, submit a Git pull request to the base branch (the repository and branch you forked your project from)
- 8. Once I have approved your changes, you can see where the real fun starts!
+8. Once you've pushed your change, submit a Git pull request to the base branch (the repository and branch you forked your project from)
+9. Once I have approved your changes, you can see where the real fun starts!
  
  ## C-I-C-Your way into this delivery pipeline
 Now that the changes have been pushed to this repo's master branch, you can see all the cool stuff going on behind the scenes!
@@ -74,3 +76,5 @@ Now let's break down each build job in the miniproject pipeline!
 4. `miniproject-qa` - here is where we see our first deployment. This job pulls the latest image from the `niyi37/miniproject-odumosu-niyi` docker repository. Then it runs the image inside a docker container on the QA's ec2 instance.
 
 4. `miniproject-prod` - this job does the same as the QA job but pulls the image into the prod's ec2 instance. 
+
+Once the jenkins jobs have completed, you can run the restful service at http://ec2-54-90-243-96.compute-1.amazonaws.com:8100/ in the QA environment
