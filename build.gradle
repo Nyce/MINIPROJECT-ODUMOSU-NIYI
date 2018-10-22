@@ -23,7 +23,7 @@ apply plugin: 'com.palantir.docker'
 // end::plugin[]
 
 // This is used as the docker image prefix (org)
-group = 'niyi37'
+group = 'springio'
 
 bootJar {
     baseName = 'miniproject-odumosu-niyi'
@@ -51,8 +51,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    complie("org.projectlombok:lombok:1.16.8")
+    compile("org.springframework.boot:spring-boot-starter-web") 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 

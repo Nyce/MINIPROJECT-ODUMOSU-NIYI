@@ -3,24 +3,15 @@ package hello;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.time.Instant;
 
 @SpringBootApplication
 @RestController
 public class Application {
 
     @RequestMapping("/")
-    @ResponseBody
-    public Automation home() {
-        Automation automate = new Automation();
-        Instant timestamp = Instant.now();
-        automate.setTimestamp(timestamp.getEpochSecond());
-        automate.setMessage("Automate for the People");
-        return automate;
-
+    public String home() {
+        return "Hello Docker World";
     }
 
     public static void main(String[] args) {
