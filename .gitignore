@@ -2,3 +2,5 @@
 .gradle/*
 target/
 *.pem
+build/
+.idea
