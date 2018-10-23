@@ -78,3 +78,5 @@ Now let's break down each build job in the miniproject pipeline!
 4. `miniproject-prod` - this job does the same as the QA job but pulls the image into the prod's ec2 instance. 
 
 Once the jenkins jobs have completed, you can run the restful service at http://ec2-54-90-243-96.compute-1.amazonaws.com:8100/ in the QA environment
+
+Once the jenkins jobs have completed, you can run the restful service at http://ec2-34-228-29-53.compute-1.amazonaws.com:8100/ in the PROD environment
