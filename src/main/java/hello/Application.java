@@ -19,7 +19,7 @@ public class Application {
         Automation automate = new Automation();
         Instant timestamp = Instant.now();
         automate.setTimestamp(timestamp.getEpochSecond());
-        automate.setMessage("Yass Girll Yass");
+        automate.setMessage("Automate for the People");
         return automate;
 
     }
