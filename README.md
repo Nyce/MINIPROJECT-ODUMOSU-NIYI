@@ -63,7 +63,7 @@ Now that the changes have been pushed to this repo's master branch, you can see 
 ![Jenkins Dashboard](https://s3.amazonaws.com/niyiodumosu-bucket/dashboard.png)
 4. Here you should see that the miniproject-pipeline kicks off multiple build jobs for the miniproject. More than likely you see one of the jobs in the pipeline building.
 
-![Jenkins Dashboard](https://s3.amazonaws.com/niyiodumosu-bucket/pipeline.png)
+![Jenkins Pipeline](https://s3.amazonaws.com/niyiodumosu-bucket/pipeline.png)
 
 Now let's break down each build job in the miniproject pipeline!
 
@@ -80,3 +80,5 @@ Now let's break down each build job in the miniproject pipeline!
 Once the jenkins jobs have completed, you can run the restful service at http://ec2-54-90-243-96.compute-1.amazonaws.com:8100/ in the QA environment
 
 Once the jenkins jobs have completed, you can run the restful service at http://ec2-34-228-29-53.compute-1.amazonaws.com:8100/ in the PROD environment
+
+![Restful Endpoint](https://s3.amazonaws.com/niyiodumosu-bucket/miniproject_url.png)
